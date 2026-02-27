@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61", "hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pitch-analyzer"
+version = "0.1.0"
+description = "Transform football broadcast clips into 2D tactical minimaps"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "Egemen Derbedek" }]
+dependencies = [
+    "numpy>=1.24",
+    "opencv-python>=4.8",
+    "torch>=2.0",ßß
+    "ultralytics>=8.0",
+    "PySide6>=6.5",
+    "pandas>=2.0",
+    "pyarrow>=14.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+pitch-analyzer = "pitch_analyzer.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pitch_analyzer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
